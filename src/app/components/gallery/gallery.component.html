@@ -1,0 +1,42 @@
+<drag-scroll #main [scrollbar-hidden]="true" [snap-disabled]="true" [scroll-x-wheel-enabled]="true"
+    [drag-scroll-y-disabled]="true" class="main w-full h-full">
+
+    <ng-template #customLoadingTemplate>
+        <div class="loader loadingio-spinner-spin-kwefp7fam1j"><div class="ldio-981s3qlq9a7">
+            <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+            </div></div>
+    </ng-template>
+
+    <ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>
+
+    <div [ngClass]="{'loading': loading}" class="container w-full h-full">
+        <div drag-scroll-item class="main-view flex-col items-center justify-center">
+            <div class="content">
+                <div class="circle-content">
+                    <div class="title__container">
+                        <div class="title">
+                            <h1>Where do we go?</h1>
+                        </div>
+                        <div class="explore__container" cursor-active cursor-more cursor-color="#ddd"
+                            cursor-opacity=".5" cursor-size="30px">
+                            <a (click)="moveTo(1)" class="explore">Explore</a>
+                        </div>
+                        <div class="text"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="1" class="place" drag-scroll-item>
+            <div class="set-view">
+                <div id="{{i}}" *ngFor="let country of countries; let i = index" class="view-image" cursor-active
+                    cursor-more cursor-color="#ddd" cursor-opacity=".5" cursor-size="30px"
+                    style.background-image=" {{country.url}}" routerLink="/gallery/{{country.shortName}}">
+                    <div class="view-text">
+                        <h1>{{country.name}}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</drag-scroll>

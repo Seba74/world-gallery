@@ -1,0 +1,14 @@
+<ngx-cursor [cursor]="false" [selectors]="['more']" [words]="['+']" [txtcolor]="'#000'" [opacity]=".8"></ngx-cursor>
+<p>Loading...{{loading$ | async }}</p>
+
+<drag-scroll *ngIf="!(loading$ | async )" [scrollbar-hidden]="true" [scroll-x-wheel-enabled]="true" [drag-scroll-y-disabled]="true" class="main">
+    <div class="card card-1" cursor-size="20px" cursor-active cursor-more cursor-color="#ddd" cursor-opacity=".5" drag-scroll-item *ngFor="let image of images$ | async">
+        <img [src]="image.imageUrl" alt="">
+    </div>
+    <div class="card card-2" drag-scroll-item *ngFor="let image of images$ | async">
+        <img [src]="image.imageUrl" alt="">
+    </div>
+    <div class="card card-2" drag-scroll-item *ngFor="let image of images$ | async">
+        <img [src]="image.imageUrl" alt="">
+    </div>                                                          
+</drag-scroll>

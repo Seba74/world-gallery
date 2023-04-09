@@ -1,0 +1,44 @@
+<drag-scroll [scroll-x-wheel-enabled]="true" [drag-scroll-y-disabled]="true" class="main w-full h-full">
+
+    <ng-template #customLoadingTemplate>
+        <div class="loader loadingio-spinner-spin-kwefp7fam1j"><div class="ldio-981s3qlq9a7">
+            <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+            </div></div>
+    </ng-template>
+
+    <ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>
+
+    <div  [ngClass]="{'loading': loading}" drag-scroll-item class="bg flex">
+        <div class="title__container">
+            <h1 class="title">My Gallery</h1>
+            <h3 class="subtitle">Carla Sogari</h3>
+        </div>
+        <div class="sideways__container">
+            <div class="sideways_content">
+                <p class="sideways_drag">Drag Sideways</p>
+                <mat-icon
+                    class="arrow animate__animated animate__fadeOutRight animate__infinite animate__slow">arrow_forward</mat-icon>
+            </div>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div  [ngClass]="{'loading': loading}" drag-scroll-item class="router-view">
+        <div class="middle-left">
+            <div class="title__container">
+                <h1 class="title">What's to know</h1>
+                <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio cum temporibus
+                    cupiditate soluta voluptate? Culpa fugiat sed exercitationem, voluptates nemo ipsa, corrupti
+                    perspiciatis itaque tempora vero aliquid ipsum magni quam.</div>
+            </div>
+        </div>
+        <div class="middle-right">
+            <div class="routing-map" *ngFor="let country of countries$ | async">
+                <div class="go-to flex items-center" cursor-active cursor-more cursor-color="#ddd" cursor-opacity=".5"
+                    cursor-size="30px">
+                    <mat-icon class="icon">arrow_forward_ios</mat-icon>
+                    <a routerLink="/gallery/{{country.shortName}}" routerLinkActive="router-link-active">{{country.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</drag-scroll>

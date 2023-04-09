@@ -1,0 +1,33 @@
+<drag-scroll #main [scrollbar-hidden]="true" [snap-disabled]="true" [scroll-x-wheel-enabled]="true"
+    [drag-scroll-y-disabled]="true" class="main w-full h-full" (indexChanged)="reachesRightBound()">
+
+    <ng-template #customLoadingTemplate>
+        <div class="loader loadingio-spinner-spin-kwefp7fam1j"><div class="ldio-981s3qlq9a7">
+            <div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div>
+            </div></div>
+    </ng-template>
+
+    <ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>
+
+    <div [ngClass]="{'loading': loading}" class="container w-full h-full">
+        <div id="0" drag-scroll-item class="relative main-view flex-col items-center justify-center">
+            <div class="content" [style.background-image]="country? country.image : ''">
+                <div class="title__container">
+                    <h1 class="title">{{country?.name}}</h1>
+                    <p>Gallery</p>
+                </div>
+            </div>
+        </div>
+        <div drag-scroll-item id="2" class="gallery-section">
+            <div class="gallery__container">
+                <div class="gallery__item" *ngFor="let image of images$ | async">
+                    <img [src]="image.imageUrl" alt="{{image.title}}">
+                </div>
+            </div>
+        </div>
+        <div class="btn-end" [ngClass]="{'isEnd': isEnd}" cursor-active cursor-more cursor-color="#ddd"
+            cursor-opacity=".5" cursor-size="30px">
+            <button class="btn" (click)="moveTo(0)">Go back</button>
+        </div>
+    </div>
+</drag-scroll>

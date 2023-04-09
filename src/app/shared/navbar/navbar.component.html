@@ -1,0 +1,50 @@
+<div class="nav__container" [ngClass]="isClosed? 'initial' : 'open'">
+    <ngx-cursor [cursor]="false" [selectors]="['more']" [words]="['+']" [txtcolor]="'#000'" [size]="'15px'"
+        [opacity]="1">
+    </ngx-cursor>
+    <div #logo class="nav__logo flex justify-between items-center {{newClass}}">
+        <h1 [routerLink]="['/home']" cursor-size="30px" cursor-active cursor-more cursor-color="#ddd"
+            cursor-opacity=".5">Carla Sogari</h1>
+        <div class="close" cursor-active cursor-more cursor-color="#ddd" cursor-opacity=".5" cursor-size="30px"
+            (click)="closeNavbar()">
+            <mat-icon class="icon text-black">close</mat-icon>
+        </div>
+    </div>
+    <div #links class="nav__links {{newClass}}">
+        <div class="nav__routing">
+            <div class="link__content" routerLinkActive="is_active" cursor-active cursor-more cursor-color="#ddd"
+                cursor-opacity=".5" cursor-size="30px">
+                <mat-icon class="icon text-black">arrow_forward</mat-icon>
+                <a [routerLink]="['/home']">Home</a>
+            </div>
+            <div class="link__content" routerLinkActive="is_active" [routerLinkActiveOptions]="{exact: true}"
+                cursor-active cursor-more cursor-color="#ddd" cursor-opacity=".5" cursor-size="30px">
+                <mat-icon class="icon text-black">arrow_forward</mat-icon>
+                <a [routerLink]="['/gallery']">Gallery</a>
+            </div>
+        </div>
+    </div>
+    <div #footer class="footer {{newClass}}">
+        <div class="title">
+            <h1>Get in touch</h1>
+        </div>
+        <div class="social-routing">
+            <a class="social instagram text-black" href="https://www.instagram.com/carla_sogari" target="_blank"
+                cursor-active cursor-more cursor-color="#ddd" cursor-opacity=".5" cursor-size="30px">
+                <fa-icon [icon]="faInstagram" class="text-black"></fa-icon>
+                <p>Instagram</p>
+            </a>
+            <a class="social facebook text-black" href="https://www.facebook.com/carli.sogari" target="_blank"
+                cursor-active cursor-more cursor-color="#ddd" cursor-opacity=".5" cursor-size="30px">
+                <fa-icon [icon]="faFacebook" class="text-black"></fa-icon>
+                <p>Facebook</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Just when is Colpased -->
+    <div [ngClass]="{'animate__animated animate__fadeIn animate__slow': secondaryNav}" class="dots" cursor-size="30px"
+        cursor-active cursor-more cursor-color="#ddd" cursor-opacity=".5" (click)="toggleNavbar()">
+        <mat-icon class="icon text-black">more_vert</mat-icon>
+    </div>
+</div>
